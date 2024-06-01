@@ -1,0 +1,5 @@
+package backend.resell_cards_backend.enums;
+
+public enum MTGCardType{
+    ARTIFACT, ENCHANTMENT, CREATURE, LAND, PLANESWALKER, BATTLE, CONSPIRACY, DUNGEON, INSTANT, SORCERY, PLANE, SCHEME, TRIBAL, VANGUARD 
+}

@@ -1,14 +1,14 @@
+package backend.resell_cards_backend.domains;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
-import java.util.Objects;
 
+import backend.resell_cards_backend.enums.MTGCardType;
+import backend.resell_cards_backend.enums.TCG;
 
-enum MTGCardType{
-    ARTIFACT, ENCHANTMENT, CREATURE, LAND, PLANESWALKER, BATTLE, CONSPIRACY, DUNGEON, INSTANT, SORCERY, PLANE, SCHEME, TRIBAL, VANGUARD 
-}
 
 @Entity
 public class MTGCard extends Card{
