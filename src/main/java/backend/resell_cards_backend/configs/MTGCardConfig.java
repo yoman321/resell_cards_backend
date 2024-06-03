@@ -1,5 +1,6 @@
 package backend.resell_cards_backend.configs;
 
+import backend.resell_cards_backend.enums.TCG;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.CommandLineRunner;
