@@ -1,10 +1,10 @@
 package backend.resell_cards_backend.domains;
 
-import jakarta.persistence.MappedSuperclass;
+//import jakarta.persistence.MappedSuperclass;
 
 import backend.resell_cards_backend.enums.TCG;
 
-@MappedSuperclass
+//@MappedSuperclass
 public abstract class Card {
    
     private TCG game;
