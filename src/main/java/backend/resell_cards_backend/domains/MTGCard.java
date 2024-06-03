@@ -31,6 +31,10 @@ public class MTGCard extends Card{
     private String mtgCardEdition;
     private Long value;
 
+    public MTGCard(){
+        super(TCG.MTG);
+    }
+
     public MTGCard(Long id, String mtgCardName, MTGCardType mtgCardType, String mtgCardEdition, Long value){
         super(TCG.MTG);
         this.id = id;
