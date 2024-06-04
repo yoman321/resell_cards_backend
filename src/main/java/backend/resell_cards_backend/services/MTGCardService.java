@@ -2,9 +2,7 @@ package backend.resell_cards_backend.services;
 
 import java.util.*;
 
-import backend.resell_cards_backend.domains.Card;
 import backend.resell_cards_backend.domains.MTGCard;
-import backend.resell_cards_backend.enums.MTGCardType;
 import backend.resell_cards_backend.repositories.MTGCardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -19,6 +17,7 @@ public class MTGCardService {
     public MTGCardService(MTGCardRepository mtgCardRepository){
         this.mtgCardRepository = mtgCardRepository;
     }
+
     public List<MTGCard> getMTGInventory() {
             return mtgCardRepository.findAll();
     }
