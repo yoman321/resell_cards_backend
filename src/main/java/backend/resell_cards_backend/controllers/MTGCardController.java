@@ -10,6 +10,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping(path = "api/mtg_inventory")
+@CrossOrigin(origins = "http://localhost:5173")
 public class MTGCardController{
 
     private final MTGCardService mtgCardService;
