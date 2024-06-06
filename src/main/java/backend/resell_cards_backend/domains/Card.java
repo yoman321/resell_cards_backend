@@ -18,4 +18,5 @@ public abstract class Card {
     public TCG getGame(){
         return game;
     }
+    public abstract Card removeIdFromCard();
 }

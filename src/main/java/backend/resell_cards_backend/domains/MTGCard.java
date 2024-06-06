@@ -77,6 +77,11 @@ public class MTGCard extends Card{
     }
 
     @Override
+    public MTGCard removeIdFromCard(){
+       return new MTGCard(getMTGCardName(), getMtgCardType(), getMTGCardEdition(), getValue());
+    }
+
+    @Override
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +

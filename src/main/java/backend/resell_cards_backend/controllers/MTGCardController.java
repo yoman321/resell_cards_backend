@@ -1,5 +1,6 @@
 package backend.resell_cards_backend.controllers;
 
+import backend.resell_cards_backend.domains.Card;
 import backend.resell_cards_backend.domains.MTGCard;
 import backend.resell_cards_backend.services.MTGCardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class MTGCardController{
 
     @GetMapping
     public List<MTGCard> getMTGCards(){
-        return mtgCardService.getMTGInventory();
+        return mtgCardService.removeIdFromCards(mtgCardService.getMTGInventory());
     }
 
     @PostMapping

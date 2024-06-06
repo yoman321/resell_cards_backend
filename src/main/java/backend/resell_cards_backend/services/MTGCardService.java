@@ -2,9 +2,7 @@ package backend.resell_cards_backend.services;
 
 import java.util.*;
 
-import backend.resell_cards_backend.domains.Card;
 import backend.resell_cards_backend.domains.MTGCard;
-import backend.resell_cards_backend.enums.MTGCardType;
 import backend.resell_cards_backend.repositories.MTGCardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -43,5 +41,12 @@ public class MTGCardService {
             throw new IllegalStateException("Card is not in your inventory");
         }
         mtgCardRepository.delete(mtgCard);
+    }
+
+    public List<MTGCard> removeIdFromCards(List<MTGCard> cards){
+        assert cards != null;
+
+        cards.replaceAll(MTGCard::removeIdFromCard);
+        return cards;
     }
 }
