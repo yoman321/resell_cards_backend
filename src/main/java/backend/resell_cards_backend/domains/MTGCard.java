@@ -1,10 +1,7 @@
 package backend.resell_cards_backend.domains;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
 import backend.resell_cards_backend.enums.MTGCardType;
 import backend.resell_cards_backend.enums.TCG;
@@ -24,71 +21,70 @@ public class MTGCard extends Card{
         strategy = GenerationType.SEQUENCE,
         generator = "mtg_card_sequence"
     )
-
     private Long id;
     private String mtgCardName;
     private MTGCardType mtgCardType;
     private String mtgCardEdition;
-    private Long value;
+    private Long mtgCardValue;
 
     public MTGCard(){
         super(TCG.MTG);
     }
 
-    public MTGCard(Long id, String mtgCardName, MTGCardType mtgCardType, String mtgCardEdition, Long value){
+    public MTGCard(Long id, String mtgCardName, MTGCardType mtgCardType, String mtgCardEdition, Long mtgCardValue){
         super(TCG.MTG);
         this.id = id;
         this.mtgCardName = mtgCardName;
         this.mtgCardType = mtgCardType;
         this.mtgCardEdition = mtgCardEdition;
-        this.value = value;
+        this.mtgCardValue = mtgCardValue;
     }
 
-    public MTGCard(String mtgCardName, MTGCardType mtgCardType, String mtgCardEdition, Long value){
+    public MTGCard(String mtgCardName, MTGCardType mtgCardType, String mtgCardEdition, Long mtgCardValue){
         super(TCG.MTG);
         this.mtgCardName = mtgCardName;
         this.mtgCardType = mtgCardType;
         this.mtgCardEdition = mtgCardEdition;
-        this.value = value;
+        this.mtgCardValue = mtgCardValue;
     }
 
     public Long getId(){
         return id;
     }
-    public String getMTGCardName(){
+    public String getMtgCardName(){
         return mtgCardName;
     }
     public MTGCardType getMtgCardType(){
         return mtgCardType;
     }
-    public String getMTGCardEdition(){
+    public String getMtgCardEdition(){
         return mtgCardEdition;
     }
-    public Long getValue(){
-        return value;
+    public Long getMtgCardValue(){
+        return mtgCardValue;
     }
     public void setId(Long id) {
         this.id = id;
     }
 
     //we only have the value setter because once the card is created, we don't want any other values to be changed
-    public void setValue(Long value) {
-        this.value = value;
+    public void setMTGCardValue(Long mtgCardValue) {
+        this.mtgCardValue = mtgCardValue;
     }
 
     @Override
     public MTGCard removeIdFromCard(){
-       return new MTGCard(getMTGCardName(), getMtgCardType(), getMTGCardEdition(), getValue());
+       return new MTGCard(getMtgCardName(), getMtgCardType(), getMtgCardEdition(), getMtgCardValue());
     }
 
     @Override
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", mtgCardName='" + getMTGCardName() + "'" +
+            ", mtgCardName='" + getMtgCardName() + "'" +
             ", mtgCardType='" + getMtgCardType() + "'" +
-            ", mtgCardEdition='" + getMTGCardEdition() + "'" +
-            ", value='" + getValue() + "'" +
+            ", mtgCardEdition='" + getMtgCardEdition() + "'" +
+            ", value='" + getMtgCardValue() + "'" +
             "}";
     }
 
