@@ -24,7 +24,7 @@ public class MTGCardController {
     return mtgCardService.removeIdFromCards(mtgCardService.getMTGInventory());
   }
 
-  @PostMapping
+  @PutMapping
   public void addNewMTGCard(@RequestBody MTGCard mtgCard) {
     mtgCardService.addNewMTGCard(mtgCard);
   }
