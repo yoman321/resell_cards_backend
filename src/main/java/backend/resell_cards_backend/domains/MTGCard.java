@@ -1,11 +1,13 @@
 package backend.resell_cards_backend.domains;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 
 import backend.resell_cards_backend.enums.MTGCardType;
 import backend.resell_cards_backend.enums.TCG;
+import backend.resell_cards_backend.serializer.CardSerializer;
 
+@JsonSerialize(using = CardSerializer.class)
 @Entity
 public class MTGCard extends Card {
 

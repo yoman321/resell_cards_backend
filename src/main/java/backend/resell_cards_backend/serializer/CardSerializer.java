@@ -1,6 +1,7 @@
 package backend.resell_cards_backend.serializer;
 
 import java.io.IOException;
+import java.util.*;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -24,17 +25,25 @@ public class CardSerializer extends StdSerializer<MTGCard> {
   public void serialize(MTGCard card, JsonGenerator jgen, SerializerProvider provider)
       throws IOException, JsonProcessingException {
 
+    List<String> cardTypesToString = new ArrayList<>();
+
+    for (MTGCardType type : card.getMtgCardType()) {
+      String typeString = type.name();
+      StringBuilder stringBuilder = new StringBuilder();
+
+      stringBuilder.append(typeString.substring(0, 1));
+      stringBuilder.append(typeString.substring(1).toLowerCase());
+
+      cardTypesToString.add(stringBuilder.toString());
+    }
+
     jgen.writeStartObject();
     jgen.writeStringField("mtgCardName", card.getMtgCardName());
-
-    jgen.writeStartArray("mtgCardType");
-    for (MTGCardType type : card.getMtgCardType()) {
-      jgen.writeString(type.name().toLowerCase());
-    }
-    jgen.writeEndArray();
-
+    jgen.writeFieldName("mtgCardType");
+    jgen.writeObject(cardTypesToString);
     jgen.writeStringField("mtgCardEdition", card.getMtgCardEdition());
     jgen.writeNumberField("mtgCardValue", card.getMtgCardValue());
-    jgen.close();
+    jgen.writeEndObject();
   }
+
 }

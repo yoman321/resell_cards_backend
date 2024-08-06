@@ -1,11 +1,14 @@
 package backend.resell_cards_backend.controllers;
 
 import backend.resell_cards_backend.domains.MTGCard;
+import backend.resell_cards_backend.enums.MTGCardType;
 import backend.resell_cards_backend.services.MTGCardService;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.io.IOException;
 
 @RestController
 @RequestMapping(path = "api/mtg_inventory")
@@ -20,8 +23,8 @@ public class MTGCardController {
   }
 
   @GetMapping
-  public List<MTGCard> getMTGCards() {
-    return mtgCardService.removeIdFromCards(mtgCardService.getMTGInventory());
+  public String getMTGCards() throws IOException {
+    return new ObjectMapper().writeValueAsString(mtgCardService.getMTGInventory());
   }
 
   @PutMapping
