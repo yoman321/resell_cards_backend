@@ -1,7 +1,6 @@
 package backend.resell_cards_backend.controllers;
 
 import backend.resell_cards_backend.domains.MTGCard;
-import backend.resell_cards_backend.enums.MTGCardType;
 import backend.resell_cards_backend.services.MTGCardService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
