@@ -13,9 +13,9 @@ public class MTGCard extends Card {
 
   @Id
   @SequenceGenerator(name = "mtg_card_sequence", sequenceName = "mtg_card_sequence", allocationSize = 1)
-
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mtg_card_sequence")
   private Long id;
+
   private String mtgCardName;
   private MTGCardType mtgCardType[];
   private String mtgCardEdition;
