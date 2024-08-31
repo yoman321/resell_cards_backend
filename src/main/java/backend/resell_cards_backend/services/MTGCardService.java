@@ -4,7 +4,6 @@ import java.util.*;
 
 import backend.resell_cards_backend.domains.MTGCard;
 import backend.resell_cards_backend.repositories.MTGCardRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +12,6 @@ public class MTGCardService {
 
   private final MTGCardRepository mtgCardRepository;
 
-  @Autowired
   public MTGCardService(MTGCardRepository mtgCardRepository) {
     this.mtgCardRepository = mtgCardRepository;
   }

@@ -5,10 +5,10 @@ This is the backend repo for the Resell Cards project
 ### TODO List
 
 1. ~~initial setup of mtg card including api~~
-2. initial setup for user login including api
-3. implement automatic email for contact me
-4. Implement data grouping for overview page
-5. Port to external database
+2. ~~Port to external database~~
+3. initial setup for user login including api
+4. implement automatic email for contact me
+5. Implement data grouping for overview page
 
 ### Issues
 

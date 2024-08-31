@@ -1,5 +1,7 @@
 package backend.resell_cards_backend.domains;
 
+import java.util.*;
+
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 
@@ -9,17 +11,22 @@ import backend.resell_cards_backend.serializer.CardSerializer;
 
 @JsonSerialize(using = CardSerializer.class)
 @Entity
+@Table(name = "mtg_card")
 public class MTGCard extends Card {
 
   @Id
   @SequenceGenerator(name = "mtg_card_sequence", sequenceName = "mtg_card_sequence", allocationSize = 1)
-
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mtg_card_sequence")
   private Long id;
+
   private String mtgCardName;
   private MTGCardType mtgCardType[];
   private String mtgCardEdition;
   private Long mtgCardValue;
+
+  @ManyToMany
+  @JoinTable(name = "trader_cards", joinColumns = @JoinColumn(name = "mtgcard_id"), inverseJoinColumns = @JoinColumn(name = "cardtrader_id"))
+  private List<CardTrader> cardTraders;
 
   public MTGCard() {
     super(TCG.MTG);
