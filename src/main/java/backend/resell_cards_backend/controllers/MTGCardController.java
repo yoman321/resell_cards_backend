@@ -4,7 +4,6 @@ import backend.resell_cards_backend.domains.MTGCard;
 import backend.resell_cards_backend.services.MTGCardService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -16,7 +15,6 @@ public class MTGCardController {
 
   private final MTGCardService mtgCardService;
 
-  @Autowired
   public MTGCardController(MTGCardService mtgCardService) {
     this.mtgCardService = mtgCardService;
   }
