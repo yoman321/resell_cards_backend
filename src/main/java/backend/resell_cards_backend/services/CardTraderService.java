@@ -45,13 +45,13 @@ public class CardTraderService {
 
   public void removeCardTrader(CardTrader cardTrader) {
 
-    List<CardTrader> repositoryCardTrader = cardTraderRepository.findAll(Example.of(cardTrader));
+    List<CardTrader> card_traders_to_be_deleted = cardTraderRepository.findAll(Example.of(cardTrader));
 
-    if (repositoryCardTrader.isEmpty()) {
+    if (card_traders_to_be_deleted.isEmpty()) {
       throw new IllegalStateException("Card Trader does not exist");
     }
 
-    cardTraderRepository.delete(cardTrader);
+    cardTraderRepository.deleteById(cardTrader.getId());
   }
 
 }

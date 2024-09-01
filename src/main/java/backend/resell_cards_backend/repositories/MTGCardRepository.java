@@ -7,7 +7,7 @@ import java.util.Optional;
 import backend.resell_cards_backend.domains.MTGCard;
 
 @Repository
-public interface MTGCardRepository extends JpaRepository<MTGCard, Long>{
+public interface MTGCardRepository extends JpaRepository<MTGCard, Long> {
 
-//    Optional<MTGCard> findMTGCardByMTGCardName(String mtgCardName);
+  Optional<MTGCard> findMTGCardBymtgCardName(String mtgCardName);
 }

@@ -33,12 +33,12 @@ public class MTGCardService {
 
   public void removeMTGCard(MTGCard mtgCard) {
 
-    Example<MTGCard> exampleMtgCard = Example.of(mtgCard);
-    List<MTGCard> optionalCard = mtgCardRepository.findAll(exampleMtgCard);
+    Optional<MTGCard> optionalCard = mtgCardRepository.findMTGCardBymtgCardName(mtgCard.getMtgCardName());
 
     if (optionalCard.isEmpty()) {
       throw new IllegalStateException("Card is not in your inventory");
     }
-    mtgCardRepository.delete(mtgCard);
+
+    mtgCardRepository.deleteById(optionalCard.get().getId());
   }
 }

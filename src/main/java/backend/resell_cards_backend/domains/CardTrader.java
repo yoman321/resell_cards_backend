@@ -22,8 +22,9 @@ public class CardTrader {
   @Column(unique = true, nullable = false)
   private String password;
 
-  @ManyToMany(mappedBy = "cardTraders")
-  private List<MTGCard> mtgCardList = new ArrayList<>();
+  @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+  @JoinTable(name = "trader_cards", joinColumns = @JoinColumn(name = "cardtrader_id"), inverseJoinColumns = @JoinColumn(name = "mtgcard_id"))
+  private Set<MTGCard> mtgCardSet = new HashSet<>();
 
   public CardTrader() {
 
@@ -40,12 +41,20 @@ public class CardTrader {
     this.password = password;
   }
 
+  public Long getId() {
+    return id;
+  }
+
   public String getEmail() {
     return email;
   }
 
   public String getPassword() {
     return password;
+  }
+
+  public Set<MTGCard> getMTGCardSet() {
+    return new HashSet<>(mtgCardSet);
   }
 
   public void setEmail(String email) {
@@ -55,4 +64,16 @@ public class CardTrader {
   public void setPassword(String password) {
     this.password = password;
   }
+
+  public void removeMTGCard(MTGCard card) {
+    mtgCardSet.remove(card);
+  }
+
+  @PreRemove
+  private void removeMTGCardFromMTGCardSet() {
+    for (MTGCard card : mtgCardSet) {
+      card.removeCardTrader(this);
+    }
+  }
+
 }

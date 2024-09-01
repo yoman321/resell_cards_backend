@@ -24,9 +24,8 @@ public class MTGCard extends Card {
   private String mtgCardEdition;
   private Long mtgCardValue;
 
-  @ManyToMany
-  @JoinTable(name = "trader_cards", joinColumns = @JoinColumn(name = "mtgcard_id"), inverseJoinColumns = @JoinColumn(name = "cardtrader_id"))
-  private List<CardTrader> cardTraders;
+  @ManyToMany(mappedBy = "mtgCardSet")
+  private Set<CardTrader> cardTraders;
 
   public MTGCard() {
     super(TCG.MTG);
@@ -69,6 +68,10 @@ public class MTGCard extends Card {
     return mtgCardValue;
   }
 
+  public Set<CardTrader> getCardTraders() {
+    return new HashSet<>(cardTraders);
+  }
+
   public void setId(Long id) {
     this.id = id;
   }
@@ -79,9 +82,20 @@ public class MTGCard extends Card {
     this.mtgCardValue = mtgCardValue;
   }
 
+  public void removeCardTrader(CardTrader cardTrader) {
+    cardTraders.remove(cardTrader);
+  }
+
   @Override
   public MTGCard removeIdFromCard() {
     return new MTGCard(getMtgCardName(), getMtgCardType(), getMtgCardEdition(), getMtgCardValue());
+  }
+
+  @PreRemove
+  private void removeCardTraderFromCardTraders() {
+    for (CardTrader cardTrader : cardTraders) {
+      cardTrader.removeMTGCard(this);
+    }
   }
 
   @Override

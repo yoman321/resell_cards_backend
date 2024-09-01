@@ -27,4 +27,9 @@ public class CardTraderController {
   public void addNewCardTrader(@RequestBody CardTrader cardTrader) {
     cardTraderService.addNewCardTrader(cardTrader);
   }
+
+  @DeleteMapping
+  public void removeCardTrader(@RequestBody CardTrader cardTrader) {
+    cardTraderService.removeCardTrader(cardTrader);
+  }
 }
