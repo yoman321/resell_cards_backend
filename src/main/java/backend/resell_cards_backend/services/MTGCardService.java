@@ -39,6 +39,6 @@ public class MTGCardService {
     if (optionalCard.isEmpty()) {
       throw new IllegalStateException("Card is not in your inventory");
     }
-    mtgCardRepository.delete(mtgCard);
+    mtgCardRepository.deleteById(mtgCard.getId());
   }
 }

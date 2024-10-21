@@ -1,7 +1,5 @@
 package backend.resell_cards_backend.domains;
 
-import java.util.*;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -21,9 +19,6 @@ public class CardTrader {
   @NotEmpty(message = "password cannot be emtpy")
   @Column(unique = true, nullable = false)
   private String password;
-
-  @ManyToMany(mappedBy = "cardTraders")
-  private List<MTGCard> mtgCardList = new ArrayList<>();
 
   public CardTrader() {
 
